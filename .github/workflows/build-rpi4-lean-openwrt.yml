@@ -306,6 +306,6 @@ jobs:
       - name: Delete Artifacts
         uses: geekyeggo/delete-artifact@v1
         with:
-         retain_days: 1
-         keep_minimum_runs: 3
+         name: 1
+         failOnError: 3
             bin-archive
