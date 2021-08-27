@@ -152,6 +152,10 @@ jobs:
           sed -i "s/http:\/\/192.168.123.100:2345\/snapshots/https:\/\/openwrt.cc\/snapshots\/$(date +"%Y-%m-%d")\/lean/g" files/etc/opkg/distfeeds.conf.mirror
           if "$IPV6MOD_IN_FIRMWARE" = 'true'
           then
+              mkdir -p files/www/package
+              cp -r bin/targets files/www/package
+              cp -r bin/package files/www/package/artifact/package/*.ipk
+              
               mkdir -p files/www/ipv6-modules
               cp bin/packages/$PLATFORM/luci/luci-proto-ipv6* files/www/ipv6-modules
               cp bin/packages/$PLATFORM/base/{ipv6helper*,odhcpd-ipv6only*,odhcp6c*,6in4*} "files/www/ipv6-modules"
